@@ -14,3 +14,6 @@ vendor/*
 
 application/bootstrap.php
 .htaccess
+
+node_modules
+bower_components
