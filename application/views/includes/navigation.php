@@ -7,11 +7,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?= URL::site('', $protocol); ?>">Music in Cloud</a>
+        <a class="navbar-brand ajax" href="dashboard">Music in Cloud</a>
     </div>
     <!-- /.navbar-header -->
 
     <?php include APPPATH . 'views/includes/navbar.php'; ?>
-    <?php include APPPATH . 'views/container_sidebar/sb_dashboard.php'; ?>
+    
+    <div id="page-sidebar" class="navbar-default sidebar" role="navigation" data-name="">
+    <?php include APPPATH . 'views/container/sidebar/dashboard.php'; ?>
+    </div>
     
 </nav>

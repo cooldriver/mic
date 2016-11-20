@@ -151,10 +151,39 @@ Route::set('logout', 'logout')
         'controller' => 'Login',
         'action'     => 'logout',
     ));
-Route::set('default', '(<directory>/)(<controller>(/<action>(/<id>)))',
+
+Route::set('default', '(<controller>(/<action>)(/<id>))',
         array(
-            'directory'     => 'ajaxhtml|cron|html|json'
+            'controller'    => '[A-Za-z_]+',
+            'action'        => '[a-zA-Z_]+',
+            'id'            => '[0-9A-Za-z_\-]+',
         ))
+        ->filter(function($route, $params, $request) {
+
+            // Controller directory is empty by default
+            $params['directory'] = '';
+
+            // Controller
+            if (!empty($params['controller'])) {
+
+                /* Model name used for */
+                $modelName = $params['controller'];
+
+                $controller = explode('_', $params['controller']);
+                for ($i=0; $i<count($controller) - 1; $i++) {
+                    $params['directory'] .= DIRECTORY_SEPARATOR . $controller[$i];
+                }
+                
+                $params['controller'] = $controller[count($controller) - 1];
+            }
+
+            // Default directory
+            if (empty($params['directory'])) {
+                $params['directory'] = 'html';
+            }
+            
+            return $params;
+        })
     ->defaults(array(
         'directory'  => 'html',
         'controller' => 'Home',

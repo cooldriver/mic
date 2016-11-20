@@ -1,7 +1,3 @@
-$(function() {
-    $('#side-menu').metisMenu();
-});
-
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
@@ -40,3 +36,59 @@ $(function() {
         }
     }
 });
+
+$(document).ready(function() {
+    
+    // Default view
+    Container.load_main('dashboard');
+    
+    // Handles link loading containers
+    $(document).on('click',  'a.ajax', function(e) {
+        e.preventDefault();
+        
+        Container.load_main($(this).attr('href'));
+        
+    });
+    
+});
+
+// Containers handling
+var Container = {
+    
+    // Loads the main container
+    load_main : function (name) {
+        $.getJSON( BASE_URL + 'container_main_' + name, {} )
+        .done(function(json) {
+            
+            // Updates main container
+            $('#page-wrapper').html(json.html);
+            
+            // Check if sidebar is up to date
+            if ($('#page-sidebar').data('name') != json.require_sb) {
+                Container.load_sidebar(json.require_sb);
+            }
+        })
+        .fail(function(jqxhr, textStatus, error) {
+          console.log('Request failed');
+        });
+    },
+    
+    // Loads the sidebar container
+    load_sidebar : function (name) {
+        $.getJSON( BASE_URL + 'container_sidebar_' + name, {} )
+        .done(function(json) {
+            
+            // Updates sidebar container
+            $('#page-sidebar').html(json.html);
+            // Sets the name of the div
+            $('#page-sidebar').data('name', name);
+            // Side-menu initialization
+            $('#side-menu').metisMenu();
+            
+        })
+        .fail(function(jqxhr, textStatus, error) {
+          console.log('Request failed');
+        });
+    }
+    
+};
