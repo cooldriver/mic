@@ -62,6 +62,8 @@ var Container = {
             
             // Updates main container
             $('#page-wrapper').html(json.html);
+            // Sets the name of the current element
+            $('#page-wrapper').data('name', name);
             
             // Check if sidebar is up to date
             if ($('#page-sidebar').data('name') != json.require_sb) {
@@ -82,6 +84,10 @@ var Container = {
             $('#page-sidebar').html(json.html);
             // Sets the name of the div
             $('#page-sidebar').data('name', name);
+            // Selects the correct element in menu
+            var current_element = $('#side-menu a[href="' + $('#page-wrapper').data('name') + '"]');
+            current_element.addClass('active');
+            current_element.parents('li').addClass('active');
             // Side-menu initialization
             $('#side-menu').metisMenu();
             

@@ -2,16 +2,13 @@
 <div class="sidebar-nav navbar-collapse">
     <ul class="nav" id="side-menu">
         <?php include APPPATH . 'views/container/sidebar/include_search.php'; ?>
-        <li>
-            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-        </li>
 
         <li>
             <a href="#"><i class="fa fa-music fa-fw"></i> Music<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-                <li><a href="flot.html">Songs</a></li>
-                <li><a href="morris.html">Artists</a></li>
-                <li><a href="morris.html">Albums</a></li>
+                <li><a class="ajax" href="library_songs">Songs</a></li>
+                <li><a class="ajax" href="library_artists">Artists</a></li>
+                <li><a class="ajax" href="library_albums">Albums</a></li>
             </ul>
         </li>
 
