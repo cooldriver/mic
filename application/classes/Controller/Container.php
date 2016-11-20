@@ -27,7 +27,11 @@
         
         $this->response->headers('Content-Type', 'application/json; charset=utf-8');
         
-        $this->template = View::factory($this->template);
+        $this->template = View::factory(
+                ($this->request->action() === 'index') ?
+                    $this->template :
+                    $this->template . '_' . $this->request->action()
+                );
     }
     
     /**

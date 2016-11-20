@@ -40,20 +40,43 @@ $(function() {
 $(document).ready(function() {
     
     // Default view
-    Container.load_main('dashboard');
+    Container.load_main('admin_catalog');
     
     // Handles link loading containers
-    $(document).on('click',  'a.ajax', function(e) {
+    $(document).on('click',  'a.ajax,button.ajax', function(e) {
         e.preventDefault();
         
-        Container.load_main($(this).attr('href'));
+        Container.load_main($(this).data('url'));
         
+    });
+    
+    // Handles form that should be posted in AJAX
+    $(document).on('submit',  'form.ajax', function(e) {
+        e.preventDefault();
+        
+        $.post(BASE_URL + $(this).data('url'), $(this).serialize())
+                .done(function(response){
+                    console.log('form success');
+                    console.log(response);
+                    if (response.redirect_url !== null) {
+                        Container.load_main(response.redirect_url);
+                    }
+                })
+                .fail(function(response){
+                    console.log('form fail');
+                    console.log(response);
+                });
     });
     
 });
 
 // Containers handling
 var Container = {
+    
+    // Reloads the current container
+    reload : function () {
+        Container.load_main($('#page-wrapper').data('name'));
+    },
     
     // Loads the main container
     load_main : function (name) {
@@ -85,7 +108,7 @@ var Container = {
             // Sets the name of the div
             $('#page-sidebar').data('name', name);
             // Selects the correct element in menu
-            var current_element = $('#side-menu a[href="' + $('#page-wrapper').data('name') + '"]');
+            var current_element = $('#side-menu a[data-url="' + $('#page-wrapper').data('name') + '"]');
             current_element.addClass('active');
             current_element.parents('li').addClass('active');
             // Side-menu initialization

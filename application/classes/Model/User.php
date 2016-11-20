@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
  
-class Model_User extends ORM {
+class Model_User extends Model_Base {
  
     /**
      * Returns true is a user is currently connected

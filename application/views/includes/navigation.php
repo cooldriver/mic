@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand ajax" href="dashboard">Music in Cloud</a>
+        <a class="navbar-brand ajax" href="#" data-url="dashboard">Music in Cloud</a>
     </div>
     <!-- /.navbar-header -->
 

@@ -10,5 +10,5 @@
     <!-- /input-group -->
 </li>
 <li>
-    <a class="ajax" href="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+    <a class="ajax" href="#" data-url="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 </li>

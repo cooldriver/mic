@@ -6,9 +6,9 @@
         <li>
             <a href="#"><i class="fa fa-music fa-fw"></i> Music<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
-                <li><a class="ajax" href="library_songs">Songs</a></li>
-                <li><a class="ajax" href="library_artists">Artists</a></li>
-                <li><a class="ajax" href="library_albums">Albums</a></li>
+                <li><a class="ajax" href="#" data-url="library_songs">Songs</a></li>
+                <li><a class="ajax" href="#" data-url="library_artists">Artists</a></li>
+                <li><a class="ajax" href="#" data-url="library_albums">Albums</a></li>
             </ul>
         </li>
 
