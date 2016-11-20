@@ -12,7 +12,7 @@ class Controller_Html_Login extends Controller_Html {
         
         // Check if already logged in
         if (Model_User::is_logged() && $this->request->action() !== 'logout') {
-            $this->redirect(URL::site('dashboard', $this->protocol));
+            $this->redirect(URL::site('', $this->protocol));
         }
         
         // Processes the login form
@@ -51,7 +51,7 @@ class Controller_Html_Login extends Controller_Html {
                 Model_User::login($this->request->post('email'), $this->request->post('password'));
                 
                 // Login ok, redirects to dashboard
-                $this->redirect(URL::site('dashboard', $this->protocol));
+                $this->redirect(URL::site('', $this->protocol));
             } catch (Kohana_Exception $ex) {
                 // Error while login
                 Message::add_error($ex->getMessage());

@@ -549,5 +549,4 @@
 </div>
 <!-- /#wrapper -->
 
-<?php include APPPATH . 'views/includes/player.php'; ?>
 <?php include APPPATH . 'views/includes/footer.php';

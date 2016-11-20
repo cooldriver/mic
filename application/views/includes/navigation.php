@@ -7,11 +7,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?= URL::site('dashboard', $protocol); ?>">Music in Cloud</a>
+        <a class="navbar-brand" href="<?= URL::site('', $protocol); ?>">Music in Cloud</a>
     </div>
     <!-- /.navbar-header -->
 
     <?php include APPPATH . 'views/includes/navbar.php'; ?>
-    <?php include APPPATH . 'views/includes/sidebar.php'; ?>
+    <?php include APPPATH . 'views/container_sidebar/sb_dashboard.php'; ?>
     
 </nav>
